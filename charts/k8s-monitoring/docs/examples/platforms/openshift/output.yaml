@@ -20,7 +20,7 @@ metadata:
   name: k8smon-kepler
   namespace: default
   labels:
-    helm.sh/chart: kepler-0.6.0
+    helm.sh/chart: kepler-0.6.1
     app.kubernetes.io/name: kepler
     app.kubernetes.io/component: exporter
     app.kubernetes.io/version: "release-0.8.0"
@@ -60,10 +60,10 @@ metadata:
 data:
   config.yml: |
     collectors:
-      enabled: cpu,cs,container,logical_disk,memory,net,os
+      enabled: cpu,container,logical_disk,memory,net,os
     collector:
       service:
-        services-where: "Name='containerd' or Name='kubelet'"
+        include: "containerd|kubelet"
 ---
 # Source: k8s-monitoring/templates/alloy-config.yaml
 apiVersion: v1
@@ -1686,7 +1686,7 @@ metadata:
   name: k8smon-kepler
   namespace: default
   labels:
-    helm.sh/chart: kepler-0.6.0
+    helm.sh/chart: kepler-0.6.1
     app.kubernetes.io/name: kepler
     app.kubernetes.io/component: exporter
     app.kubernetes.io/version: "release-0.8.0"
@@ -1736,7 +1736,7 @@ metadata:
   name: k8smon-kepler
   namespace: default
   labels:
-    helm.sh/chart: kepler-0.6.0
+    helm.sh/chart: kepler-0.6.1
     app.kubernetes.io/name: kepler
     app.kubernetes.io/component: exporter
     app.kubernetes.io/version: "release-0.8.0"
